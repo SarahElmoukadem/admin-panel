@@ -1,0 +1,56 @@
+@import '../../styles/variables.scss';
+
+.navbar {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .icons {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        cursor: pointer;
+
+        .notification {
+            position: relative;
+
+            span {
+                background-color: #F00;
+                color: $white-color;
+                width: 15px;
+                height: 15px;
+                border-radius: 50%;
+                position: absolute;
+                top: -9px;
+                right: -9px;
+                text-align: center;
+                font-size: 9px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+        }
+    }
+
+    .user {
+        display: flex;
+        align-items: center;
+
+        .icon {
+            width: 35px;
+            height: 35px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin: 0 7px;
+
+        }
+    }
+}
