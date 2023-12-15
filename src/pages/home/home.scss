@@ -1,0 +1,44 @@
+@import '../../styles/variables.scss';
+
+.home {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(4, 1fr);
+
+    grid-auto-rows: minmax(180px, auto);
+
+    .block {
+        padding: 20px;
+        border-radius: 10px;
+        border: 2px solid $primary-bg;
+    }
+
+    .block1 {
+        grid-column: span 2;
+        grid-row: span 2;
+    }
+
+    .block2 {
+        grid-column: span 2;
+        grid-row: span 1;
+    }
+
+    .block3 {
+        grid-column: span 2;
+    }
+
+    .block4 {
+        grid-column: span 1;
+        grid-row: span 1;
+    }
+
+    .block5 {
+        grid-column: span 1;
+        grid-row: span 1;
+    }
+
+    .block6 {
+        grid-column: span 1;
+        grid-row: span 1;
+    }
+}
