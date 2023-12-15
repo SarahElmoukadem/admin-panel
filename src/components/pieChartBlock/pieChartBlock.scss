@@ -1,0 +1,26 @@
+.options {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    font-size: 14px;
+    flex-direction: row;
+
+    .option {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: center;
+
+      .title {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+
+        .dot {
+          width: 10px;
+          height: 10px;
+          border-radius: 50%;
+        }
+      }
+    }
+  }

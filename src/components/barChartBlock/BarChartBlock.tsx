@@ -5,23 +5,11 @@ import {
     Line,
     Area,
     Bar,
-    XAxis,
-    YAxis,
-    CartesianGrid,
     Tooltip,
-    Legend,
     Scatter,
     ResponsiveContainer,
 } from 'recharts';
-
-interface Product {
-    id: number;
-    age: number;
-    height: number;
-    weight: number;
-    firstName: string;
-
-}
+import { Product } from '../../interfaces/interface';
 
 const BarChartBlock = () => {
 
@@ -59,7 +47,7 @@ const BarChartBlock = () => {
                 <ResponsiveContainer width="100%" height="100%">
                     <ComposedChart
                         width={500}
-                        height={400}
+                        height={200}
                         data={data}
                         margin={{
                             top: 20,
@@ -68,11 +56,9 @@ const BarChartBlock = () => {
                             left: 20,
                         }}
                     >
-                        <XAxis dataKey="firstName" scale="band" />
                         <Tooltip contentStyle={{ background: "#2a3447", borderRadius: "5px" }}
                             labelStyle={{ display: "none" }}
                             cursor={{ fill: "none" }} />
-                        {/* <Legend /> */}
                         <Area type="monotone" dataKey="age" fill="#8884d8" stroke="#8884d8" />
                         <Bar dataKey="weight" barSize={10} fill="#413ea0" />
                         <Line type="monotone" dataKey="height" stroke="#ff7300" />
