@@ -1,0 +1,28 @@
+@import '../../styles/variables.scss';
+
+.side-menu{
+    .menu-item{
+        margin-bottom: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .title{
+        text-transform: uppercase;
+        font-style: 12px;
+        color: $primary-color;
+    }
+    .listItem {
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        gap: 10px;
+        border-radius: 4px;
+        color: $white-color;
+        text-decoration: none;
+
+        &:hover{
+            background-color: $primary-bg;
+        }
+    }
+}
