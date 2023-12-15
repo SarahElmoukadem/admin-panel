@@ -60,9 +60,9 @@ const BarChartBlock = () => {
                             labelStyle={{ display: "none" }}
                             cursor={{ fill: "none" }} />
                         <Area type="monotone" dataKey="age" fill="#8884d8" stroke="#8884d8" />
-                        <Bar dataKey="weight" barSize={10} fill="#413ea0" />
+                        <Bar dataKey="height" barSize={10} fill="#413ea0" />
                         <Line type="monotone" dataKey="height" stroke="#ff7300" />
-                        <Scatter dataKey="age" fill="red" />
+                        <Scatter dataKey="weight" fill="red" />
                     </ComposedChart>
                 </ResponsiveContainer>
             </div>
