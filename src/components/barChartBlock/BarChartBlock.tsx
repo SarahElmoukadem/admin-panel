@@ -42,7 +42,7 @@ const BarChartBlock = () => {
                 RealTime Users Info
             </h2>
 
-            <div className="charts">
+            {/* <div className="charts"> */}
 
                 <ResponsiveContainer width="100%" height="100%">
                     <ComposedChart
@@ -61,11 +61,11 @@ const BarChartBlock = () => {
                             cursor={{ fill: "none" }} />
                         <Area type="monotone" dataKey="age" fill="#8884d8" stroke="#8884d8" />
                         <Bar dataKey="height" barSize={10} fill="#413ea0" />
-                        <Line type="monotone" dataKey="height" stroke="#ff7300" />
+                        {/* <Line type="monotone" dataKey="height" stroke="#ff7300" /> */}
                         <Scatter dataKey="weight" fill="red" />
                     </ComposedChart>
                 </ResponsiveContainer>
-            </div>
+            {/* </div> */}
         </div>
     )
 }
