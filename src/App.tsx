@@ -13,6 +13,11 @@ import Todos from './pages/todos/Todos';
 import Carts from './pages/carts/Carts';
 import Profile from './pages/profile/Profile';
 import SingleUser from './pages/users/singleUser/SingleUser';
+import SinglePosts from './pages/posts/singlePosts/SinglePosts';
+import SingleQuotes from './pages/quotes/singleQuotes/SingleQuotes';
+import SingleComments from './pages/comments/singleComments/SingleComments';
+import SingleCarts from './pages/carts/singlePosts/SingleCarts';
+import SingleTodos from './pages/todos/singleTodos/SingleTodos';
 
 
 
@@ -67,7 +72,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/comments/:id",
-        element: <SingleProduct />,
+        element: <SingleComments />,
       },
       {
         path: "/posts",
@@ -75,7 +80,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/posts/:id",
-        element: <SingleProduct />,
+        element: <SinglePosts />,
       },
       {
         path: "/quotes",
@@ -83,7 +88,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/quotes/:id",
-        element: <SingleProduct />,
+        element: <SingleQuotes />,
       },
       {
         path: "/todos",
@@ -91,7 +96,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/todos/:id",
-        element: <SingleProduct />,
+        element: <SingleTodos />,
       },
       {
         path: "/carts",
@@ -99,7 +104,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/carts/:id",
-        element: <SingleProduct />,
+        element: <SingleCarts />,
       },
       {
         path: "/profile",
