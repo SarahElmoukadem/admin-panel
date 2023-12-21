@@ -18,21 +18,17 @@ const Home = () => {
 
       <div className="block block6">
         <TotalUserBlock />
-        {/* <CustomStraightAnglePieChart /> */}
       </div>
 
       <div className="block block6">
         <TotalPostsBlock />
-        {/* <CustomStraightAnglePieChart /> */}
       </div>
 
       <div className="block block6">
-        {/* <CustomStraightAnglePieChart /> */}
         <TotalProductsBlock />
       </div>
 
       <div className="block block6">
-        {/* <CustomStraightAnglePieChart /> */}
         <TotalCartsBlock />
       </div>
 
