@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import './singleProduct.scss';
 import axios from 'axios';
-import { Product } from '../../interfaces/interface';
-import Single from '../../components/single/Single';
+import { Product } from '../../../interfaces/interface';
+import Single from '../../../components/single/Single';
 import { useParams } from 'react-router-dom';
 
 const SingleProduct = () => {

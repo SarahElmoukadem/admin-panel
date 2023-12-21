@@ -4,7 +4,7 @@ import Navbar from './components/navbar/Navbar';
 import { Outlet, RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Home from './pages/home/Home';
 import Products from './pages/products/Products';
-import SingleProduct from './pages/singleProduct/SingleProduct';
+import SingleProduct from './pages/products/singleProduct/SingleProduct';
 import Users from './pages/users/Users';
 import Orders from './pages/orders/Orders';
 import Comments from './pages/comments/Comments';
