@@ -6,13 +6,13 @@ import Home from './pages/home/Home';
 import Products from './pages/products/Products';
 import SingleProduct from './pages/products/singleProduct/SingleProduct';
 import Users from './pages/users/Users';
-import Orders from './pages/orders/Orders';
 import Comments from './pages/comments/Comments';
 import Posts from './pages/posts/Posts';
 import Quotes from './pages/quotes/Quotes';
 import Todos from './pages/todos/Todos';
 import Carts from './pages/carts/Carts';
 import Profile from './pages/profile/Profile';
+import SingleUser from './pages/users/singleUser/SingleUser';
 
 
 
@@ -59,15 +59,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/users/:id",
-        element: <SingleProduct />,
-      },
-      {
-        path: "/orders",
-        element: <Orders />,
-      },
-      {
-        path: "/orders/:id",
-        element: <SingleProduct />,
+        element: <SingleUser />,
       },
       {
         path: "/comments",
