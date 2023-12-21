@@ -8,7 +8,7 @@ import {
     Scatter,
     ResponsiveContainer,
 } from 'recharts';
-import { Product } from '../../interfaces/interface';
+import { Product } from '../../../interfaces/interface';
 
 const BarChartBlock = () => {
 

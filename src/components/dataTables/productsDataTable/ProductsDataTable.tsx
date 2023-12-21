@@ -10,7 +10,7 @@ import { FaRegEye } from "react-icons/fa";
 import { GoTrash } from "react-icons/go";
 import axios from 'axios';
 import { useState } from 'react';
-import { Product } from '../../interfaces/interface';
+import { Product } from '../../../interfaces/interface';
 
 type Props = {
     columns: GridColDef[],
@@ -18,7 +18,7 @@ type Props = {
     slug: string,
 }
 
-const DataTable = (props: Props) => {
+const ProductsDataTable = (props: Props) => {
     const [rows, setRows] = useState(props.rows);
     const handleDelete = (id: number) => {
         axios.delete(`https://dummyjson.com/products/${id}`)
@@ -75,4 +75,4 @@ const DataTable = (props: Props) => {
     )
 }
 
-export default DataTable
+export default ProductsDataTable

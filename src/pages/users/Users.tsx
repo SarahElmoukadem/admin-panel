@@ -1,94 +1,92 @@
-import { useEffect, useState } from 'react';
-import axios from 'axios';
-import { Product } from '../../interfaces/interface';
 import { GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
+import { UsersInfo } from '../../interfaces/interface';
 import Add from '../../components/add/Add';
-import ProductsDataTable from '../../components/dataTables/productsDataTable/ProductsDataTable';
+import UsersDataTable from '../../components/dataTables/usersDataTable/UsersDataTable';
 
-
-
-const Products = () => {
+const Users = () => {
 
   const columns: GridColDef[] = [
     { field: 'id', headerName: 'ID', width: 90 },
     {
-      field: 'title',
-      headerName: 'Title',
+      field: 'firstName',
+      headerName: 'First Name',
       width: 150,
       editable: true,
       type: 'string',
-      valueGetter: (params: GridValueGetterParams) =>
-        `${params.row.category || ''} ${params.row.title || ''}`,
+      // valueGetter: (params: GridValueGetterParams) =>
+      //   `${params.row.category || ''} ${params.row.title || ''}`,
     },
     {
-      field: 'description',
-      headerName: 'description',
-      type: 'string',
-      width: 150,
-      editable: true,
-    },
-    {
-      field: 'price',
-      headerName: 'price',
+      field: 'age',
+      headerName: 'age',
       type: 'number',
-      width: 110,
+      width: 50,
       editable: true,
     },
     {
-      field: 'discountPercentage',
-      headerName: 'Discount Percentage',
-      type: 'number',
-      width: 110,
-      editable: true,
-    },
-    {
-      field: 'rating',
-      headerName: 'rating',
-      type: 'number',
-      width: 110,
-      editable: true,
-    },
-    {
-      field: 'stock',
-      headerName: 'stock',
-      type: 'number',
-      width: 110,
-      editable: true,
-    },
-    {
-      field: 'brand',
-      headerName: 'brand',
+      field: 'email',
+      headerName: 'email',
       type: 'string',
       width: 110,
       editable: true,
     },
     {
-      field: 'category',
-      headerName: 'category',
+      field: 'phone',
+      headerName: 'Phone',
+      type: 'number',
+      width: 110,
+      editable: true,
+    },
+    {
+      field: 'height',
+      headerName: 'height',
+      type: 'number',
+      width: 60,
+      editable: true,
+    },
+    {
+      field: 'weight',
+      headerName: 'weight',
+      type: 'number',
+      width: 60,
+      editable: true,
+    },
+    {
+      field: 'university',
+      headerName: 'University',
       type: 'string',
       width: 110,
       editable: true,
     },
     {
-      field: 'thumbnail',
-      headerName: 'thumbnail',
+      field: 'domain',
+      headerName: 'domain',
+      type: 'string',
+      width: 110,
+      editable: true,
+    },
+    {
+      field: 'image',
+      headerName: 'Image',
       type: 'string',
       width: 110,
       editable: false,
       renderCell: (params) => {
-        return <img src={params.row.thumbnail} alt="" /> || ' '
+        return <img src={params.row.image} alt="" /> || ' '
       }
     }
   ];
   
-  const [data, setData] = useState<Product[] | null>(null);
+  const [data, setData] = useState<UsersInfo[] | null>(null);
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const result = await axios('https://dummyjson.com/products');
-        setData(result.data.products);
+        const result = await axios('https://dummyjson.com/users');
+        setData(result.data.users);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -105,24 +103,24 @@ const Products = () => {
     console.error('Data is not an array:', data);
     return <div>Error loading data</div>;
   }
-
+  
   return (
     <div className='products'>
       <div className='main-info'>
         <h3>
-          Products
+          Users
         </h3>
         {/* <button onClick={() => setOpen(true)}>
           Add new
         </button> */}
       </div>
 
-      <ProductsDataTable columns={columns} rows={data} slug='products' />
+      <UsersDataTable columns={columns} rows={data} slug='users' />
 
-      {open && <Add setOpen={setOpen} columns={columns} slug='product'/>}
+      {open && <Add setOpen={setOpen} columns={columns} slug='user'/>}
 
     </div>
-  );
-};
+  )
+}
 
-export default Products;
+export default Users

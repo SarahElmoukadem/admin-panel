@@ -5,6 +5,14 @@ import { Outlet, RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Home from './pages/home/Home';
 import Products from './pages/products/Products';
 import SingleProduct from './pages/singleProduct/SingleProduct';
+import Users from './pages/users/Users';
+import Orders from './pages/orders/Orders';
+import Comments from './pages/comments/Comments';
+import Posts from './pages/posts/Posts';
+import Quotes from './pages/quotes/Quotes';
+import Todos from './pages/todos/Todos';
+import Carts from './pages/carts/Carts';
+import Profile from './pages/profile/Profile';
 
 
 
@@ -44,7 +52,67 @@ const router = createBrowserRouter([
       {
         path: "/products/:id",
         element: <SingleProduct />,
-      }
+      },
+      {
+        path: "/users",
+        element: <Users />,
+      },
+      {
+        path: "/users/:id",
+        element: <SingleProduct />,
+      },
+      {
+        path: "/orders",
+        element: <Orders />,
+      },
+      {
+        path: "/orders/:id",
+        element: <SingleProduct />,
+      },
+      {
+        path: "/comments",
+        element: <Comments />,
+      },
+      {
+        path: "/comments/:id",
+        element: <SingleProduct />,
+      },
+      {
+        path: "/posts",
+        element: <Posts />,
+      },
+      {
+        path: "/posts/:id",
+        element: <SingleProduct />,
+      },
+      {
+        path: "/quotes",
+        element: <Quotes />,
+      },
+      {
+        path: "/quotes/:id",
+        element: <SingleProduct />,
+      },
+      {
+        path: "/todos",
+        element: <Todos />,
+      },
+      {
+        path: "/todos/:id",
+        element: <SingleProduct />,
+      },
+      {
+        path: "/carts",
+        element: <Carts />,
+      },
+      {
+        path: "/carts/:id",
+        element: <SingleProduct />,
+      },
+      {
+        path: "/profile",
+        element: <Profile />,
+      },
     ]
   },
   // {

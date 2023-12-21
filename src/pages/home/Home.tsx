@@ -1,20 +1,18 @@
 import './home.scss'
-import LineChartBlock from '../../components/lineChartBlock/LineChartBlock'
-import BarChartBlock from '../../components/barChartBlock/BarChartBlock'
-import CustomStraightAnglePieChart from '../../components/customStraightAnglePieChart/CustomStraightAnglePieChart'
-import PieChartBlock from '../../components/pieChartBlock/PieChartBlock'
-import AreaChartBlock from '../../components/areaChartBlock/AreaChartBlock'
-import TotalUserBlock from '../../components/totalUserBlock/TotalUserBlock'
-import TotalPostsBlock from '../../components/totalPostsBlock/TotalPostsBlock'
-import TotalProductsBlock from '../../components/totalProductsBlock/TotalProductsBlock'
-import TotalCartsBlock from '../../components/totalCartsBlock/TotalCartsBlock'
+import LineChartBlock from '../../components/chartsComponents/lineChartBlock/LineChartBlock'
+import BarChartBlock from '../../components/chartsComponents/barChartBlock/BarChartBlock'
+import CustomStraightAnglePieChart from '../../components/chartsComponents/customStraightAnglePieChart/CustomStraightAnglePieChart'
+import PieChartBlock from '../../components/chartsComponents/pieChartBlock/PieChartBlock'
+import AreaChartBlock from '../../components/chartsComponents/areaChartBlock/AreaChartBlock'
+import TotalUserBlock from '../../components/totalBlocks/totalUserBlock/TotalUserBlock'
+import TotalPostsBlock from '../../components/totalBlocks/totalPostsBlock/TotalPostsBlock'
+import TotalProductsBlock from '../../components/totalBlocks/totalProductsBlock/TotalProductsBlock'
+import TotalCartsBlock from '../../components/totalBlocks/totalCartsBlock/TotalCartsBlock'
 
 const Home = () => {
   return (
 
     <div className='home'>
-
-
 
       <div className="block block6">
         <TotalUserBlock />
