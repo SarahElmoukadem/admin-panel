@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
 import { menu } from "../../data";
 import './menu.scss';
-import { FaUserAlt, FaHome, FaUsers, FaOpencart } from 'react-icons/fa';
+import { FaUserAlt, FaHome, FaUsers, FaOpencart,FaRegComments  } from 'react-icons/fa';
 import { MdProductionQuantityLimits, MdOutlinePostAdd } from "react-icons/md";
+import { FaCartShopping } from "react-icons/fa6";
+import { ImQuotesLeft } from "react-icons/im";
+import { LuListTodo } from "react-icons/lu";
 
 const Menu = () => {
 
@@ -12,7 +15,7 @@ const Menu = () => {
     FaUsers,
     MdProductionQuantityLimits,
     FaOpencart,
-    MdOutlinePostAdd
+    MdOutlinePostAdd,FaCartShopping,FaRegComments,ImQuotesLeft,LuListTodo
     // Add more icons here
   };
 

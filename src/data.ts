@@ -12,7 +12,7 @@ export const menu = [
         {
           id: 2,
           title: "Profile",
-          url: "/users/1",
+          url: "/profile",
           icon: "FaUserAlt",
         },
       ],
@@ -45,72 +45,31 @@ export const menu = [
           url: "/posts",
           icon: "MdOutlinePostAdd",
         },
+        {
+          id: 5,
+          title: "Carts",
+          url: "/carts",
+          icon: "FaCartShopping",
+        },
+        {
+          id: 6,
+          title: "Comments",
+          url: "/comments",
+          icon: "FaRegComments",
+        },
+        {
+          id: 7,
+          title: "Quotes",
+          url: "/quotes",
+          icon: "ImQuotesLeft",
+        },
+        {
+          id: 8,
+          title: "Todos",
+          url: "/todos",
+          icon: "LuListTodo",
+        }
+        
       ],
-    },
-    // {
-    //   id: 3,
-    //   title: "general",
-    //   listItems: [
-    //     {
-    //       id: 1,
-    //       title: "Elements",
-    //       url: "/",
-    //       icon: "element.svg",
-    //     },
-    //     {
-    //       id: 2,
-    //       title: "Notes",
-    //       url: "/",
-    //       icon: "note.svg",
-    //     },
-    //     {
-    //       id: 3,
-    //       title: "Forms",
-    //       url: "/",
-    //       icon: "form.svg",
-    //     },
-    //     {
-    //       id: 4,
-    //       title: "Calendar",
-    //       url: "/",
-    //       icon: "calendar.svg",
-    //     },
-    //   ],
-    // },
-    // {
-    //   id: 4,
-    //   title: "Maintenance",
-    //   listItems: [
-    //     {
-    //       id: 1,
-    //       title: "Settings",
-    //       url: "/",
-    //       icon: "setting.svg",
-    //     },
-    //     {
-    //       id: 2,
-    //       title: "Backups",
-    //       url: "/",
-    //       icon: "backup.svg",
-    //     },
-    //   ],
-    // },
-    // {
-    //   id: 5,
-    //   title: "analytics",
-    //   listItems: [
-    //     {
-    //       id: 1,
-    //       title: "Charts",
-    //       url: "/",
-    //       icon: "chart.svg",
-    //     },
-    //     {
-    //       id: 2,
-    //       title: "Logs",
-    //       url: "/",
-    //       icon: "log.svg",
-    //     },
-    //   ],
-    // },
+    }
   ];
