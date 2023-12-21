@@ -1,5 +1,5 @@
 
-import { PieChart, Pie, Sector, Cell, ResponsiveContainer, Line, LineChart, AreaChart, Area, CartesianGrid, Tooltip, XAxis, YAxis } from 'recharts';
+import {  ResponsiveContainer, Line, LineChart, Tooltip  } from 'recharts';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 

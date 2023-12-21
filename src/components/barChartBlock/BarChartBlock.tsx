@@ -2,7 +2,6 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import {
     ComposedChart,
-    Line,
     Area,
     Bar,
     Tooltip,
