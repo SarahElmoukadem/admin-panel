@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Product } from '../../interfaces/interface';
 import DataTable from '../../components/dataTable/DataTable';
 import { GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
+import Add from '../../components/add/Add';
 
 
 
@@ -15,12 +16,14 @@ const Products = () => {
       headerName: 'Title',
       width: 150,
       editable: true,
+      type: 'string',
       valueGetter: (params: GridValueGetterParams) =>
         `${params.row.category || ''} ${params.row.title || ''}`,
     },
     {
       field: 'description',
       headerName: 'description',
+      type: 'string',
       width: 150,
       editable: true,
     },
@@ -55,38 +58,31 @@ const Products = () => {
     {
       field: 'brand',
       headerName: 'brand',
+      type: 'string',
       width: 110,
       editable: true,
     },
     {
       field: 'category',
       headerName: 'category',
+      type: 'string',
       width: 110,
       editable: true,
     },
     {
       field: 'thumbnail',
       headerName: 'thumbnail',
+      type: 'string',
       width: 110,
       editable: false,
       renderCell: (params) => {
         return <img src={params.row.thumbnail} alt="" /> || ' '
       }
-    },
-    // {
-    //   field: 'images',
-    //   headerName: 'images',
-    //   width: 110,
-    //   editable: true,
-    //   renderCell: (params) => {
-    //     return <img src={params.row.images} alt="" />
-    //   }
-    // }
+    }
   ];
 
-
-
   const [data, setData] = useState<Product[] | null>(null);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -117,12 +113,14 @@ const Products = () => {
         <h3>
           Products
         </h3>
-        <button>
+        <button onClick={() => setOpen(true)}>
           Add new
         </button>
       </div>
 
       <DataTable columns={columns} rows={data} slug='products' />
+
+      {open && <Add setOpen={setOpen} columns={columns} slug='product'/>}
 
     </div>
   );
