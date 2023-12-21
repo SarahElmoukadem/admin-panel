@@ -80,7 +80,7 @@ const Products = () => {
       }
     }
   ];
-
+  
   const [data, setData] = useState<Product[] | null>(null);
   const [open, setOpen] = useState(false);
 
@@ -113,9 +113,9 @@ const Products = () => {
         <h3>
           Products
         </h3>
-        <button onClick={() => setOpen(true)}>
+        {/* <button onClick={() => setOpen(true)}>
           Add new
-        </button>
+        </button> */}
       </div>
 
       <DataTable columns={columns} rows={data} slug='products' />
