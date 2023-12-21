@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
-import './singleProduct.scss';
+import './singleTodos.scss';
 import axios from 'axios';
 import { Todo } from '../../../interfaces/interface';
 import { useParams } from 'react-router-dom';
 import { FaCheck } from "react-icons/fa6";
 import { CiTimer } from "react-icons/ci";
 
-const SingleProduct = () => {
+const SingleTodos = () => {
   const [data, setData] = useState<Todo | null>(null);
   const { id } = useParams();
 
@@ -38,4 +38,4 @@ const SingleProduct = () => {
   );
 };
 
-export default SingleProduct;
+export default SingleTodos;
