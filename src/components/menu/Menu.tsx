@@ -16,7 +16,6 @@ const Menu = () => {
     MdProductionQuantityLimits,
     FaOpencart,
     MdOutlinePostAdd,FaCartShopping,FaRegComments,ImQuotesLeft,LuListTodo
-    // Add more icons here
   };
 
   return (
