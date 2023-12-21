@@ -1,4 +1,4 @@
-import { GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
+import { GridColDef } from '@mui/x-data-grid';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { UsersInfo } from '../../interfaces/interface';
@@ -14,9 +14,7 @@ const Users = () => {
       headerName: 'First Name',
       width: 150,
       editable: true,
-      type: 'string',
-      // valueGetter: (params: GridValueGetterParams) =>
-      //   `${params.row.category || ''} ${params.row.title || ''}`,
+      type: 'string'
     },
     {
       field: 'age',
