@@ -9,19 +9,20 @@ import { Link } from 'react-router-dom';
 import { FaRegEye } from "react-icons/fa";
 import { GoTrash } from "react-icons/go";
 import axios from 'axios';
+import { useState } from 'react';
+import { Product } from '../../interfaces/interface';
 
 type Props = {
     columns: GridColDef[],
-    rows: object[],
+    rows: Product[],
     slug: string,
 }
 
 const DataTable = (props: Props) => {
-
+    const [rows, setRows] = useState(props.rows);
     const handleDelete = (id: number) => {
-        // axios.delete('/api/${slug}/id)
         axios.delete(`https://dummyjson.com/products/${id}`)
-        console.log(id + 'has been deleted')
+        setRows(rows.filter(item => item.id !== id))
     }
     const actionColumn: GridColDef = {
         field: "action",
@@ -30,7 +31,7 @@ const DataTable = (props: Props) => {
         renderCell: (params) => {
             return (
                 <div className='action'>
-                    <Link to={`${props.slug}/${params.row.id}`}>
+                    <Link to={`/products/${params.row.id}`}>
                         <FaRegEye />
                     </Link>
                     <div className="delete" onClick={() => handleDelete(params.row.id)}>
@@ -46,7 +47,7 @@ const DataTable = (props: Props) => {
         <div className='dataTable'>
 
             <DataGrid
-                rows={props.rows}
+                rows={rows}
                 columns={[...props.columns, actionColumn]}
                 initialState={{
                     pagination: {
