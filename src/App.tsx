@@ -18,6 +18,7 @@ import SingleQuotes from './pages/quotes/singleQuotes/SingleQuotes';
 import SingleComments from './pages/comments/singleComments/SingleComments';
 import SingleCarts from './pages/carts/singlePosts/SingleCarts';
 import SingleTodos from './pages/todos/singleTodos/SingleTodos';
+import Login from './pages/login/Login';
 
 
 
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
     path: "/",
     element: <Layout />,
     children: [
+      {
+        path: "/login",
+        element: <Login />,
+      },
       {
         path: "/",
         element: <Home />,
@@ -112,10 +117,10 @@ const router = createBrowserRouter([
       },
     ]
   },
-  // {
-  //   path:'/login',
-  //   element:<Login />
-  // }
+  {
+    path:'/login',
+    element:<Login />
+  }
 
 ])
 
