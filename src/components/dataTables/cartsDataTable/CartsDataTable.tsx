@@ -11,6 +11,7 @@ import { GoTrash } from "react-icons/go";
 import axios from 'axios';
 import { useState } from 'react';
 import { CartsInfo } from '../../../interfaces/interface';
+import { useLocalStorage } from '../../../hooks/custmHooks';
 
 type Props = {
     columns: GridColDef[],
@@ -20,10 +21,22 @@ type Props = {
 
 const CartsDataTable = (props: Props) => {
     const [rows, setRows] = useState(props.rows);
+    const { getItem, setItem } = useLocalStorage('cartData');
+
     const handleDelete = (id: number) => {
         axios.delete(`https://dummyjson.com/carts/${id}`)
-        setRows(rows.filter(item => item.id !== id))
-    }
+            .then(() => {
+                const updatedRows = rows.filter(item => item.id !== id);
+                setRows(updatedRows);
+                setItem(updatedRows);
+            })
+            .catch(error => {
+                console.error('Error deleting row:', error);
+            });
+    };
+
+    const initialRows = getItem() || props.rows;
+
     const actionColumn: GridColDef = {
         field: "action",
         headerName: "Action",
@@ -47,7 +60,7 @@ const CartsDataTable = (props: Props) => {
         <div className='dataTable'>
 
             <DataGrid
-                rows={rows}
+                rows={initialRows}
                 columns={[...props.columns, actionColumn]}
                 initialState={{
                     pagination: {

@@ -10,6 +10,9 @@ export const useLocalStorage = (key: string) => {
             console.error('Error saving to localStorage:', error);
         }
     };
+
+    // Get items
+
     const getItem = () => {
         try {
             const item = window.localStorage.getItem(key);
@@ -19,5 +22,16 @@ export const useLocalStorage = (key: string) => {
 
         }
     }
-    return { setItem, getItem }
+
+    // Remove items
+    const removeItem = () => {
+        try{
+            window.localStorage.removeItem(key);
+        } catch (error) {
+            console.error('Error removing from localStorage:', error);
+
+        }
+    }
+
+    return { setItem, getItem, removeItem }
 }
