@@ -11,6 +11,7 @@ import { GoTrash } from "react-icons/go";
 import axios from 'axios';
 import { useState } from 'react';
 import { Todo } from '../../../interfaces/interface';
+import { useLocalStorage } from '../../../hooks/custmHooks';
 
 type Props = {
     columns: GridColDef[],
@@ -20,10 +21,21 @@ type Props = {
 
 const TodosDataTable = (props: Props) => {
     const [rows, setRows] = useState(props.rows);
+    const { getItem, setItem } = useLocalStorage('Todos Data');
+
     const handleDelete = (id: number) => {
         axios.delete(`https://dummyjson.com/todos/${id}`)
-        setRows(rows.filter(item => item.id !== id))
+            .then(() => {
+                const updatedRows = rows.filter(item => item.id !== id)
+                setItem(updatedRows);
+                setRows(updatedRows)
+            })
+            .catch((error) => {
+                console.error('Error deleting Todos data', error)
+            })
     }
+    const initialRows = getItem() || props.rows;
+  
     const actionColumn: GridColDef = {
         field: "action",
         headerName: "Action",
@@ -47,7 +59,7 @@ const TodosDataTable = (props: Props) => {
         <div className='dataTable'>
 
             <DataGrid
-                rows={rows}
+                rows={initialRows}
                 columns={[...props.columns, actionColumn]}
                 initialState={{
                     pagination: {
