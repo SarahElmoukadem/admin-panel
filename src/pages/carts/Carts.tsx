@@ -12,7 +12,7 @@ const Carts = () => {
       field: 'total',
       headerName: 'total',
       width: 150,
-      editable: true,
+      editable: false,
       type: 'string'
     },
     {
@@ -20,28 +20,28 @@ const Carts = () => {
       headerName: 'Discounted Total',
       type: 'number',
       width: 150,
-      editable: true,
+      editable: false,
     },
     {
       field: 'userId',
       headerName: 'userId',
       type: 'number',
       width: 150,
-      editable: true,
+      editable: false,
     },
     {
       field: 'totalProducts',
       headerName: 'total Products',
       type: 'number',
       width: 150,
-      editable: true,
+      editable: false,
     },
     {
       field: 'totalQuantity',
       headerName: 'total Quantity',
       type: 'number',
       width: 150,
-      editable: true,
+      editable: false,
     }
   ];
 

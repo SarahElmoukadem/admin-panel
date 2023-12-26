@@ -13,7 +13,7 @@ const Todos = () => {
       field: 'todo',
       headerName: 'Todo',
       width: 150,
-      editable: true,
+      editable: false,
       type: 'string'
     },
     {
@@ -21,14 +21,14 @@ const Todos = () => {
       headerName: 'completed',
       type: 'boolean',
       width: 150,
-      editable: true,
+      editable: false,
     },
     {
       field: 'userId',
       headerName: 'user Id',
       type: 'number',
       width: 150,
-      editable: true,
+      editable: false,
     }
   ];
   

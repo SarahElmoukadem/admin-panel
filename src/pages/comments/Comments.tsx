@@ -13,7 +13,7 @@ const Comments = () => {
       field: 'body',
       headerName: 'body',
       width: 450,
-      editable: true,
+      editable: false,
       type: 'string'
     },
     {
@@ -21,7 +21,7 @@ const Comments = () => {
       headerName: 'Post Id',
       type: 'number',
       width: 250,
-      editable: true,
+      editable: false,
     }
   ];
 

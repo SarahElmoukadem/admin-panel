@@ -13,7 +13,7 @@ const Posts = () => {
       field: 'title',
       headerName: 'Title',
       width: 150,
-      editable: true,
+      editable: false,
       type: 'string',
       valueGetter: (params: GridValueGetterParams) =>
         `${params.row.category || ''} ${params.row.title || ''}`,
@@ -23,28 +23,28 @@ const Posts = () => {
       headerName: 'body',
       type: 'string',
       width: 150,
-      editable: true,
+      editable: false,
     },
     {
       field: 'userId',
       headerName: 'userId',
       type: 'number',
       width: 110,
-      editable: true,
+      editable: false,
     },
     {
       field: 'tags',
       headerName: 'tags',
       type: 'string',
       width: 110,
-      editable: true,
+      editable: false,
     },
     {
       field: 'reactions',
       headerName: 'reactions',
       type: 'number',
       width: 110,
-      editable: true,
+      editable: false,
     }
   ];
 

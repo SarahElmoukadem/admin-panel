@@ -13,7 +13,7 @@ const Quotes = () => {
       field: 'quote',
       headerName: 'Quote',
       width: 350,
-      editable: true,
+      editable: false,
       type: 'string'
     },
     {
@@ -21,7 +21,7 @@ const Quotes = () => {
       headerName: 'Author',
       type: 'string',
       width: 150,
-      editable: true,
+      editable: false,
     }
   ];
 
