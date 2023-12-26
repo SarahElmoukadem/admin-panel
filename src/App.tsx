@@ -16,7 +16,7 @@ import SingleUser from './pages/users/singleUser/SingleUser';
 import SinglePosts from './pages/posts/singlePosts/SinglePosts';
 import SingleQuotes from './pages/quotes/singleQuotes/SingleQuotes';
 import SingleComments from './pages/comments/singleComments/SingleComments';
-import SingleCarts from './pages/carts/singlePosts/SingleCarts';
+import SingleCarts from './pages/carts/singleCarts/SingleCarts';
 import SingleTodos from './pages/todos/singleTodos/SingleTodos';
 import Login from './pages/login/Login';
 
