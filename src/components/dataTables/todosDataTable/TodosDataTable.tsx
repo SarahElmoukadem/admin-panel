@@ -17,6 +17,8 @@ type Props = {
     columns: GridColDef[],
     rows: Todo[],
     slug: string,
+    pageSize:number,
+    onPageChange: (newPage: number) => void
 }
 
 const TodosDataTable = (props: Props) => {

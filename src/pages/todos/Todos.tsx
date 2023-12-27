@@ -31,20 +31,33 @@ const Todos = () => {
       editable: false,
     }
   ];
-  
+
   const [data, setData] = useState<Todo[] | null>(null);
   const [open, setOpen] = useState(false);
+  const [skip, setSkip] = useState(0);
+  const [limit, setLimit] = useState(0);
+  const [totalCount, setTotalCount] = useState(0);
+
+  const fetchData = async () => {
+    try {
+      const result = await axios(`https://dummyjson.com/todos?skip=${skip}&limit=${limit}`);
+      const initialData = result.data.todos
+      const count = result.data.total
+      setLimit(totalCount);
+      setTotalCount(count);
+      setData(initialData);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
+
+  const handlePageChange = (newPage:number) => {
+    const newSkip = (newPage - 1) * limit;
+    setSkip(newSkip);
+    fetchData();
+  };
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const result = await axios('https://dummyjson.com/todos');
-        setData(result.data.todos);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
-
     fetchData();
   }, []);
 
@@ -57,7 +70,7 @@ const Todos = () => {
     return <div>Error loading data</div>;
   }
 
-  
+
   return (
     <div className='products'>
       <div className='main-info'>
@@ -69,9 +82,15 @@ const Todos = () => {
         </button> */}
       </div>
 
-      <TodosDataTable columns={columns} rows={data} slug='todos' />
+      <TodosDataTable 
+      columns={columns} 
+      rows={data} 
+      slug='todos'
+      pageSize={limit}
+      onPageChange={handlePageChange}
+       />
 
-      {open && <Add setOpen={setOpen} columns={columns} slug='todos'/>}
+      {open && <Add setOpen={setOpen} columns={columns} slug='todos' />}
 
     </div>
   )
