@@ -76,20 +76,28 @@ const Users = () => {
       }
     }
   ];
-  
+
   const [data, setData] = useState<UsersInfo[] | null>(null);
   const [open, setOpen] = useState(false);
+  const [skip, setSkip] = useState(0);
+  const [totalCount, setTotalCount] = useState(0);
+  const [limit, setLimit] = useState(0);
+
+  const fetchData = async () => {
+    try {
+      const result = await axios(`https://dummyjson.com/users?skip=${skip}&limit=${limit}`);
+      const initialData = result.data.users
+      const count = result.data.total 
+      setTotalCount(count);
+      setData(initialData);
+      setLimit(totalCount)
+      console.log(count);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const result = await axios('https://dummyjson.com/users');
-        setData(result.data.users);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
-
     fetchData();
   }, []);
 
@@ -101,7 +109,12 @@ const Users = () => {
     console.error('Data is not an array:', data);
     return <div>Error loading data</div>;
   }
-  
+  const handlePageChange = (newPage: number) => {
+    const newSkip = (newPage - 1) * limit;
+    setSkip(newSkip);
+    fetchData(); 
+  };
+
   return (
     <div className='products'>
       <div className='main-info'>
@@ -113,10 +126,17 @@ const Users = () => {
         </button> */}
       </div>
 
-      <UsersDataTable columns={columns} rows={data} slug='users' />
+      <UsersDataTable columns={columns} rows={data} slug='users'
 
-      {open && <Add setOpen={setOpen} columns={columns} slug='user'/>}
+        pageSize={limit}
+        // rowsPerPageOptions={totalCount} 
+        onPageChange={handlePageChange}
 
+
+      />
+
+      {open && <Add setOpen={setOpen} columns={columns} slug='user' />}
+    
     </div>
   )
 }
