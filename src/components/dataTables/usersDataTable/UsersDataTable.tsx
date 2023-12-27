@@ -18,7 +18,7 @@ type Props = {
     rows: UsersInfo[],
     slug: string,
     pageSize:number,
-    onPageChange:any
+    onPageChange: (newPage: number) => void
 }
 
 const UsersDataTable = (props: Props) => {

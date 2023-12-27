@@ -97,6 +97,12 @@ const Users = () => {
     }
   };
 
+  const handlePageChange = (newPage: number) => {
+    const newSkip = (newPage - 1) * limit;
+    setSkip(newSkip);
+    fetchData(); 
+  };
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -109,11 +115,7 @@ const Users = () => {
     console.error('Data is not an array:', data);
     return <div>Error loading data</div>;
   }
-  const handlePageChange = (newPage: number) => {
-    const newSkip = (newPage - 1) * limit;
-    setSkip(newSkip);
-    fetchData(); 
-  };
+
 
   return (
     <div className='products'>
@@ -127,9 +129,7 @@ const Users = () => {
       </div>
 
       <UsersDataTable columns={columns} rows={data} slug='users'
-
         pageSize={limit}
-        // rowsPerPageOptions={totalCount} 
         onPageChange={handlePageChange}
 
 
