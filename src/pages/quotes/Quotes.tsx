@@ -27,17 +27,31 @@ const Quotes = () => {
 
   const [data, setData] = useState<QuoteInfo[] | null>(null);
   const [open, setOpen] = useState(false);
+  const [limit, setLimit] = useState(0);
+  const [totalCount, setTotalCount] = useState(0);
+  const [skip, setSkip] = useState(0);
+
+  const fetchData = async () => {
+    try {
+      const result = await axios(`https://dummyjson.com/quotes?skip=${skip}&limit=${limit}`);
+      const initialData = result.data.quotes;
+      const count = result.data.total;
+      setTotalCount(count)
+      setData(initialData);
+      setLimit(totalCount);
+
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
+
+  const handlePageChange = (newPage:number) => {
+    const newSkip = (newPage - 1) * limit;
+    setSkip(newSkip);
+    fetchData(); 
+  }
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const result = await axios('https://dummyjson.com/quotes');
-        setData(result.data.quotes);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
-
     fetchData();
   }, []);
 
@@ -61,7 +75,12 @@ const Quotes = () => {
       </button> */}
       </div>
 
-      <QuotesDataTable columns={columns} rows={data} slug='posts' />
+      <QuotesDataTable 
+      columns={columns} rows={data} slug='posts'
+      pageSize={limit}
+      onPageChange={handlePageChange}
+      
+      />
 
       {open && <Add setOpen={setOpen} columns={columns} slug='quotes' />}
 

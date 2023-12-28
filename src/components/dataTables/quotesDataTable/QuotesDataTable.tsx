@@ -17,7 +17,9 @@ type Props = {
     columns: GridColDef[],
     rows: QuoteInfo[],
     slug: string,
-}
+    pageSize: number,
+    onPageChange: (newPage: number) => void
+}  
 
 const QuotesDataTable = (props: Props) => {
     const [rows, setRows] = useState(props.rows);
