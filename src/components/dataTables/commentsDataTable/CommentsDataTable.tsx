@@ -17,6 +17,8 @@ type Props = {
     columns: GridColDef[],
     rows: CommentsInfo[],
     slug: string,
+    pageSize:number,
+    onPageChange: (newPage: number) => void
 }
 
 const CommentsDataTable = (props: Props) => {
@@ -79,7 +81,7 @@ const CommentsDataTable = (props: Props) => {
                         quickFilterProps: { debounceMs: 500 },
                     }
                 }}
-                pageSizeOptions={[5]}
+                pageSizeOptions={[10]}
                 checkboxSelection
                 disableRowSelectionOnClick
                 // disableColumnFilter

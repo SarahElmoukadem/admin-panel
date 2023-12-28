@@ -17,6 +17,8 @@ type Props = {
     columns: GridColDef[],
     rows: CartsInfo[],
     slug: string,
+    pageSize:number,
+    onPageChange: (newPage: number) => void
 }
 
 const CartsDataTable = (props: Props) => {
@@ -76,7 +78,7 @@ const CartsDataTable = (props: Props) => {
                         quickFilterProps: { debounceMs: 500 },
                     }
                 }}
-                pageSizeOptions={[5]}
+                pageSizeOptions={[10]}
                 checkboxSelection
                 disableRowSelectionOnClick
                 // disableColumnFilter

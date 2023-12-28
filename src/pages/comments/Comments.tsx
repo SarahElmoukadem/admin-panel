@@ -27,17 +27,34 @@ const Comments = () => {
 
   const [data, setData] = useState<CommentsInfo[] | null>(null);
   const [open, setOpen] = useState(false);
+  const [skip, setSkip] = useState(0);
+  const [totalCount, setTotalCount] = useState(0);
+  const [limit, setLimit] = useState(0);
+
+
+  const fetchData = async () => {
+    try {
+      const result = await axios(`https://dummyjson.com/comments?skip=${skip}&limit=${limit}`);
+      const initialData = result.data.comments
+      const count = result.data.total 
+      setTotalCount(count);
+      setData(initialData);
+      setLimit(totalCount)
+
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
+
+
+  const handlePageChange = (newPage: number) => {
+    const newSkip = (newPage - 1) * limit;
+    setSkip(newSkip);
+    fetchData(); 
+  };
+
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const result = await axios('https://dummyjson.com/comments');
-        setData(result.data.comments);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
-
     fetchData();
   }, []);
 
@@ -63,7 +80,10 @@ const Comments = () => {
     </button> */}
       </div>
 
-      <CommentsDataTable columns={columns} rows={data} slug='comments' />
+      <CommentsDataTable columns={columns} rows={data} slug='comments'
+      pageSize={limit}
+      onPageChange={handlePageChange}
+      />
 
       {open && <Add setOpen={setOpen} columns={columns} slug='comments' />}
 

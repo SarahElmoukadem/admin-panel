@@ -50,17 +50,31 @@ const Posts = () => {
 
   const [data, setData] = useState<PostInfo[] | null>(null);
   const [open, setOpen] = useState(false);
+  const [skip, setSkip] = useState(0);
+  const [totalCount, setTotalCount] = useState(0);
+  const [limit, setLimit] = useState(0);
+
+  const fetchData = async () => {
+    try {
+      const result = await axios(`https://dummyjson.com/posts?skip=${skip}&limit=${limit}`);
+      const initialData = result.data.posts;
+      const count = result.data.total;
+      setTotalCount(count);
+      setLimit(totalCount);
+      setData(initialData);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
+
+  const handlePageChange = (newPage: number) => {
+    const newSkip = (newPage - 1) * limit;
+    setSkip(newSkip);
+    fetchData(); 
+  };
+
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const result = await axios('https://dummyjson.com/posts');
-        setData(result.data.posts);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
-
     fetchData();
   }, []);
 
@@ -85,7 +99,12 @@ const Posts = () => {
       </button> */}
       </div>
 
-      <PostsDataTable columns={columns} rows={data} slug='posts' />
+      <PostsDataTable 
+      columns={columns} 
+      rows={data} 
+      slug='posts'
+      onPageChange={handlePageChange}
+      pageSize={limit} />
 
       {open && <Add setOpen={setOpen} columns={columns} slug='product' />}
 

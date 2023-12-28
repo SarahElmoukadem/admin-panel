@@ -47,17 +47,31 @@ const Carts = () => {
 
   const [data, setData] = useState<CartsInfo[] | null>(null);
   const [open, setOpen] = useState(false);
+  const [skip, setSkip] = useState(0);
+  const [totalCount, setTotalCount] = useState(0);
+  const [limit, setLimit] = useState(0);
+
+
+  const fetchData = async () => {
+    try {
+      const result = await axios('https://dummyjson.com/carts');
+      const initialData = result.data.carts
+      const count = result.data.total 
+      setTotalCount(count);
+      setData(initialData);
+      setLimit(totalCount)
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
+
+  const handlePageChange = (newPage: number) => {
+    const newSkip = (newPage - 1) * limit;
+    setSkip(newSkip);
+    fetchData(); 
+  };
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const result = await axios('https://dummyjson.com/carts');
-        setData(result.data.carts);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
-
     fetchData();
   }, []);
 
@@ -81,7 +95,13 @@ const Carts = () => {
   </button> */}
     </div>
 
-    <CartsDataTable columns={columns} rows={data} slug='carts' />
+    <CartsDataTable 
+    columns={columns} 
+    rows={data} 
+    slug='carts'
+    pageSize={limit}
+    onPageChange={handlePageChange}
+     />
 
     {open && <Add setOpen={setOpen} columns={columns} slug='carts' />}
 

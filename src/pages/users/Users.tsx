@@ -91,7 +91,6 @@ const Users = () => {
       setTotalCount(count);
       setData(initialData);
       setLimit(totalCount)
-      console.log(count);
     } catch (error) {
       console.error('Error fetching data:', error);
     }

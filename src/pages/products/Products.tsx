@@ -85,14 +85,18 @@ const Products = () => {
   const [open, setOpen] = useState(false);
   const [skip, setSkip] = useState(0);
   const [limit, setLimit] = useState(0);
-  const [totalCount, setTotalCount] = useState(0)
+  const [totalCount, setTotalCount] = useState(0);
 
 
 
   const fetchData = async () => {
     try {
       const result = await axios(`https://dummyjson.com/products?skip=${skip}&limit=${limit}`);
-      setData(result.data.products);
+      const initialData = result.data.products;
+      const count = result.data.total;
+      setTotalCount(count);
+      setLimit(totalCount)
+      setData(initialData);
     } catch (error) {
       console.error('Error fetching data:', error);
     }
@@ -129,12 +133,12 @@ const Products = () => {
       </div>
 
       <ProductsDataTable
-       columns={columns}
-       rows={data}
-       slug='products'
-       pageSize={limit}
-       onPageChange={handlePageChange}
-       />
+        columns={columns}
+        rows={data}
+        slug='products'
+        pageSize={limit}
+        onPageChange={handlePageChange}
+      />
 
       {open && <Add setOpen={setOpen} columns={columns} slug='product' />}
 
