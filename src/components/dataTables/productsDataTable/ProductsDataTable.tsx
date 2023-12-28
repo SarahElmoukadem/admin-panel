@@ -17,6 +17,8 @@ type Props = {
     columns: GridColDef[],
     rows: Product[],
     slug: string,
+    pageSize: number,
+    onPageChange: (newPage: number) => void
 }
 
 const ProductsDataTable = (props: Props) => {

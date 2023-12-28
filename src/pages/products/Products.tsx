@@ -80,20 +80,31 @@ const Products = () => {
       }
     }
   ];
-  
+
   const [data, setData] = useState<Product[] | null>(null);
   const [open, setOpen] = useState(false);
+  const [skip, setSkip] = useState(0);
+  const [limit, setLimit] = useState(0);
+  const [totalCount, setTotalCount] = useState(0)
+
+
+
+  const fetchData = async () => {
+    try {
+      const result = await axios(`https://dummyjson.com/products?skip=${skip}&limit=${limit}`);
+      setData(result.data.products);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
+
+  const handlePageChange = (newPage: number) => {
+    const newSkip = (newPage - 1) * limit;
+    setSkip(newSkip);
+    fetchData();
+  }
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const result = await axios('https://dummyjson.com/products');
-        setData(result.data.products);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
-
     fetchData();
   }, []);
 
@@ -117,9 +128,15 @@ const Products = () => {
         </button> */}
       </div>
 
-      <ProductsDataTable columns={columns} rows={data} slug='products' />
+      <ProductsDataTable
+       columns={columns}
+       rows={data}
+       slug='products'
+       pageSize={limit}
+       onPageChange={handlePageChange}
+       />
 
-      {open && <Add setOpen={setOpen} columns={columns} slug='product'/>}
+      {open && <Add setOpen={setOpen} columns={columns} slug='product' />}
 
     </div>
   );
