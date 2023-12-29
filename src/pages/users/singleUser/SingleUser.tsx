@@ -8,17 +8,21 @@ const SingleUser = () => {
   const [data, setData] = useState<UsersInfo | null>(null);
   const { id } = useParams();
 
-  useEffect(() => {
-    const fetchData = async () => {
+  const fetchData = async () => {
+    try {
       const result = await axios(`https://dummyjson.com/users/${id}`);
       setData(result.data);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+   };
 
-    };
+
+  useEffect(() => {
 
     fetchData();
 
-
-  }, [data]);
+  }, []);
 
 
   if (!data) {
