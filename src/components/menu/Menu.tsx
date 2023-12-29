@@ -1,7 +1,7 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { menu } from "../../data";
 import './menu.scss';
-import { FaUserAlt, FaHome, FaUsers, FaOpencart,FaRegComments  } from 'react-icons/fa';
+import { FaUserAlt, FaHome, FaUsers, FaOpencart, FaRegComments } from 'react-icons/fa';
 import { MdProductionQuantityLimits, MdOutlinePostAdd } from "react-icons/md";
 import { FaCartShopping } from "react-icons/fa6";
 import { ImQuotesLeft } from "react-icons/im";
@@ -15,8 +15,9 @@ const Menu = () => {
     FaUsers,
     MdProductionQuantityLimits,
     FaOpencart,
-    MdOutlinePostAdd,FaCartShopping,FaRegComments,ImQuotesLeft,LuListTodo
+    MdOutlinePostAdd, FaCartShopping, FaRegComments, ImQuotesLeft, LuListTodo
   };
+  const classNameFunc = ({ isActive }: { isActive: boolean }) => (isActive ? "active" : "");
 
   return (
     <div className="side-menu">
@@ -29,13 +30,18 @@ const Menu = () => {
               const IconComponent = iconMap[listItem.icon];
               return (
                 <div className="" key={listItem.id}>
-                  <Link to={listItem.url} className="listItem" key={listItem.id}>
-                    <span>
-                      {IconComponent && <IconComponent />}
-                    </span>
-                  
-                    <span className="listItemTitle">{listItem.title}</span>
-                  </Link>
+
+                  <NavLink to={listItem.url} className={`${classNameFunc}  listItem`} key={listItem.id}>
+
+                    {/* <Link to={listItem.url} className="listItem" key={listItem.id}> */}
+
+                      <span>
+                        {IconComponent && <IconComponent />}
+                      </span>
+
+                      <span className="listItemTitle">{listItem.title}</span>
+                    {/* </Link> */}
+                    </NavLink>
                 </div>
               )
             })
