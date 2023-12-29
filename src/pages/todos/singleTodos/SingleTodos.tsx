@@ -10,17 +10,20 @@ const SingleTodos = () => {
   const [data, setData] = useState<Todo | null>(null);
   const { id } = useParams();
 
-  useEffect(() => {
-    const fetchData = async () => {
+  const fetchData = async () => {
+    try{
       const result = await axios(`https://dummyjson.com/todos/${id}`);
       setData(result.data);
+    } catch (error) {
+      console.error('Error fetching data:' , error);
+    }
 
-    };
+  };
 
+  useEffect(() => {
     fetchData();
 
-
-  }, [data]);
+  }, []);
 
 
   if (!data) {
